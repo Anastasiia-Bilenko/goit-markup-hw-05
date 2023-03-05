@@ -16,7 +16,7 @@ body {
   --hero-background: #2e2f42;
   --white: #ffffff;
   --svg-grey: #8e8f99;
-  --background-primary:#FCFCFC;
+  --background-primary: #fcfcfc;
 }
 h1,
 h2,
@@ -65,8 +65,19 @@ img {
   padding-bottom: 24px;
   padding-top: 24px;
   position: relative;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
 }
-.navigation::after {
+.navigation:hover,
+.navigation:focus {
+  color: var(--pressed-state);
+}
+.navigation.studio {
+  color: var(--pressed-state);
+}
+.navigation.studio::after {
   content: "";
   width: 100%;
   height: 4px;
@@ -75,9 +86,20 @@ img {
   bottom: 0;
   left: 0;
   border-radius: 2px;
-  opacity: 0;
+  opacity: 1;
 }
-.navigation:active:after {
+.navigation.portfolio {
+  color: var(--pressed-state);
+}
+.navigation.portfolio::after {
+  content: "";
+  width: 100%;
+  height: 4px;
+  background-color: var(--pressed-state);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-radius: 2px;
   opacity: 1;
 }
 .stud-portf-con {
@@ -120,26 +142,14 @@ img {
   padding-bottom: 24px;
   padding-top: 24px;
   position: relative;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.contacts:active {
+.contacts:hover,
+.contacts:focus {
   color: var(--pressed-state);
 }
-
-.contacts::after {
-  content: "";
-  width: 100%;
-  height: 4px;
-  background-color: var(--pressed-state);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  border-radius: 2px;
-  opacity: 0;
-}
-.contacts:active:after {
-  opacity: 1;
-}
-
 .main-header {
   margin: 0 auto;
   font-size: 56px;
@@ -227,10 +237,11 @@ img {
   letter-spacing: 0.02em;
   color: var(--text);
   text-align: center;
+  margin-bottom: 8px;
 }
 .text-worker {
   padding-top: 32px;
-  margin-bottom: 8px;
+  padding-bottom: 32px;
 }
 ul.personal > li {
   background: var(--white);
@@ -282,6 +293,9 @@ ul.personal > li {
   text-align: center;
   color: var(--primary-brand);
   padding: 12px 24px;
+  transition-property: box-shadow, background-color, color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-portfolio {
@@ -388,9 +402,6 @@ button:hover {
 .butt:focus {
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
-  transition-property: box-shadow, background-color, color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   background-color: var(--pressed-state);
   color: var(--white);
 }
@@ -440,14 +451,11 @@ button:hover {
 .social-link:hover,
 .social-link:focus {
   background-color: var(--pressed-state);
-  border-radius: 50%;
+
 }
 .sotial-svg {
   width: 16px;
   height: 16px;
-}
-.worker {
-  padding-bottom: 32px;
 }
 
 .company-list {
@@ -458,12 +466,11 @@ button:hover {
 }
 .company-item {
   flex-basis: calc((100% - 5 * 24px) / 6);
-  height: 88px;
+  height: 88px; 
 }
 .company-link:hover,
 .company-link:focus {
   border: 1px solid var(--pressed-state);
-  border-radius: 4px;
   color: var(--pressed-state);
 }
 .company-link {
@@ -519,7 +526,6 @@ button:hover {
 .social-link-f:focus,
 .social-link-f:hover {
   background-color: var(--success);
-  border-radius: 50%;
 }
 .social-link-f {
   width: 100%;
@@ -585,42 +591,42 @@ button:hover {
   letter-spacing: 0.02em;
   color: var(--light);
 }
-.svg-modal-close{
+.svg-modal-close {
   width: 8px;
   height: 8px;
 }
 /* Modal*/
 
-.backdrop{
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background-color: rgba(46, 47, 66, 0.4);
-display: flex;
-align-items: center;
-justify-content:center;
-padding: 13px 0;
-transition: opacity 500ms, visibility 500ms;
-
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(46, 47, 66, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 0;
+  transition: opacity 500ms, visibility 500ms;
 }
-.backdrop.is-hidden .modal{
+.backdrop.is-hidden .modal {
   transform: scale(0);
 }
-.modal{
+.modal {
   width: 100%;
   height: 100%;
   max-width: 408px;
   max-height: 576px;
-  background-color:var(--background-primary);
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
- border-radius: 4px;
- overflow: auto;
- position: relative;
- transition: transform 300ms;
+  background-color: var(--background-primary);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  overflow: auto;
+  position: relative;
+  transition: transform 300ms;
 }
-.modal-close{
+.modal-close {
   position: absolute;
   right: 24px;
   top: 24px;
@@ -633,7 +639,12 @@ transition: opacity 500ms, visibility 500ms;
   justify-content: center;
   align-items: center;
 }
-.backdrop.is-hidden{
+.modal-close:active{
+  background-color:var(--pressed-state) ;
+  fill: var(--white);
+}
+
+.backdrop.is-hidden {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
